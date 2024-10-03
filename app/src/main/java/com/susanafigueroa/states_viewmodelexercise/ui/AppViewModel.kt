@@ -1,26 +1,17 @@
 package com.susanafigueroa.states_viewmodelexercise.ui
 
+import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
 class AppViewModel : ViewModel() {
 
-    private val _uiState = MutableStateFlow(AppUiState())
-    val uiState: StateFlow<AppUiState> = _uiState.asStateFlow()
+    var listStatus = mutableStateListOf<String>()
 
-    init {
-        ResetListStatus()
+    fun addCurrentStatus(status: String) {
+        listStatus.add(status)
     }
 
-    fun AddCurrentStatus(status: String) {
-        _uiState.value.currentStatus = status
-        _uiState.value.listStatus.add(status)
-    }
-
-    fun ResetListStatus() {
-        _uiState.value.listStatus.clear()
-        _uiState.value.currentStatus = ""
+    fun resetListStatus() {
+        listStatus.clear()
     }
 }

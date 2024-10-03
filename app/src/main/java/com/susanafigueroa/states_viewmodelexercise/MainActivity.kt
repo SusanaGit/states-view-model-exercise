@@ -14,7 +14,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -40,9 +39,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val appViewModel: AppViewModel = viewModel()
-            appViewModel.AddCurrentStatus(getString(R.string.oncreate_called))
+            appViewModel.addCurrentStatus(getString(R.string.oncreate_called))
 
-            SaveCurrentStates()
+            SaveCurrentStates(appViewModel)
             
             Scaffold(
                 topBar = {
@@ -61,7 +60,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                 ) {
-                    StatesViewModelApp()
+                    StatesViewModelApp(appViewModel)
                 }
             }
         }
@@ -105,30 +104,30 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun SaveCurrentStates(
-        appViewModel: AppViewModel = viewModel()
+        appViewModel: AppViewModel
     ) {
         if (statestartON) {
-            appViewModel.AddCurrentStatus(getString(R.string.oncreate_called))
+            appViewModel.addCurrentStatus(getString(R.string.oncreate_called))
             statestartON = false
         }
         if (stateresumeON) {
-            appViewModel.AddCurrentStatus(getString(R.string.onresume_called))
+            appViewModel.addCurrentStatus(getString(R.string.onresume_called))
             stateresumeON = false
         }
         if (staterestartON) {
-            appViewModel.AddCurrentStatus(getString(R.string.onrestart_called))
+            appViewModel.addCurrentStatus(getString(R.string.onrestart_called))
             staterestartON = false
         }
         if (statepauseON) {
-            appViewModel.AddCurrentStatus(getString(R.string.onpause_called))
+            appViewModel.addCurrentStatus(getString(R.string.onpause_called))
             statepauseON = false
         }
         if (statestopON) {
-            appViewModel.AddCurrentStatus(getString(R.string.onstop_called))
+            appViewModel.addCurrentStatus(getString(R.string.onstop_called))
             statestopON = false
         }
         if (statedestroyON) {
-            appViewModel.AddCurrentStatus(getString(R.string.onresume_called))
+            appViewModel.addCurrentStatus(getString(R.string.onresume_called))
             statedestroyON = false
         }
     }
