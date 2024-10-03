@@ -20,15 +20,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.susanafigueroa.states_viewmodelexercise.ui.AppViewModel
 import com.susanafigueroa.states_viewmodelexercise.ui.StatesViewModelApp
-
 class MainActivity : ComponentActivity() {
 
-    var statestartON: Boolean = false
-    var stateresumeON: Boolean = false
-    var staterestartON: Boolean = false
-    var statepauseON: Boolean = false
-    var statestopON: Boolean = false
-    var statedestroyON: Boolean = false
+    private var currentState: MutableSet<String> = mutableSetOf()
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(
@@ -42,7 +36,7 @@ class MainActivity : ComponentActivity() {
             appViewModel.addCurrentStatus(getString(R.string.oncreate_called))
 
             SaveCurrentStates(appViewModel)
-            
+
             Scaffold(
                 topBar = {
                     CenterAlignedTopAppBar(
@@ -69,67 +63,46 @@ class MainActivity : ComponentActivity() {
     override fun onStart() {
         super.onStart()
         Log.d(TAG, getString(R.string.onstart_called))
-        statestartON = true
+        currentState.add(getString(R.string.onstart_called))
     }
 
     override fun onResume() {
         super.onResume()
         Log.d(TAG, getString(R.string.onresume_called))
-        stateresumeON = true
+        currentState.add(getString(R.string.onresume_called))
     }
 
     override fun onRestart() {
         super.onRestart()
         Log.d(TAG, getString(R.string.onrestart_called))
-        staterestartON = true
+        currentState.add(getString(R.string.onrestart_called))
     }
 
     override fun onPause() {
         super.onPause()
         Log.d(TAG, getString(R.string.onpause_called))
-        statepauseON = true
+        currentState.add(getString(R.string.onpause_called))
     }
 
     override fun onStop() {
         super.onStop()
         Log.d(TAG, getString(R.string.onstop_called))
-        statestopON = true
+        currentState.add(getString(R.string.onstop_called))
     }
 
     override fun onDestroy() {
         super.onDestroy()
         Log.d(TAG, getString(R.string.ondestroy_called))
-        statedestroyON = true
+        currentState.add(getString(R.string.ondestroy_called))
     }
 
     @Composable
     fun SaveCurrentStates(
         appViewModel: AppViewModel
     ) {
-        if (statestartON) {
-            appViewModel.addCurrentStatus(getString(R.string.oncreate_called))
-            statestartON = false
+        currentState.forEach { state ->
+            appViewModel.addCurrentStatus(state)
         }
-        if (stateresumeON) {
-            appViewModel.addCurrentStatus(getString(R.string.onresume_called))
-            stateresumeON = false
-        }
-        if (staterestartON) {
-            appViewModel.addCurrentStatus(getString(R.string.onrestart_called))
-            staterestartON = false
-        }
-        if (statepauseON) {
-            appViewModel.addCurrentStatus(getString(R.string.onpause_called))
-            statepauseON = false
-        }
-        if (statestopON) {
-            appViewModel.addCurrentStatus(getString(R.string.onstop_called))
-            statestopON = false
-        }
-        if (statedestroyON) {
-            appViewModel.addCurrentStatus(getString(R.string.onresume_called))
-            statedestroyON = false
-        }
+        currentState.clear()
     }
 }
-
