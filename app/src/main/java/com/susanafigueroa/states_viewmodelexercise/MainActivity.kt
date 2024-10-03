@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import com.susanafigueroa.states_viewmodelexercise.ui.StatesViewModelApp
-import com.susanafigueroa.states_viewmodelexercise.ui.theme.StatesViewModelExerciseTheme
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
