@@ -9,4 +9,5 @@
     <string name="onstop_called">onStop Called</string>
     <string name="ondestroy_called">onDestroy Called</string>
     <string name="reset">Reset</string>
+    <string name="states">States</string>
 </resources>

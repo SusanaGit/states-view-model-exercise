@@ -51,7 +51,7 @@ fun StatesViewModelLayout(
         ) {
             ShowListStates(states = appUiState.listStatus.toList())
 
-            ShowButtonReset()
+            ShowButtonReset(appViewModel)
         }
     }
 }
@@ -61,7 +61,7 @@ fun ShowListStates(
     states: List<String>
 ) {
     Text(
-        text = "States",
+        text = stringResource(R.string.states),
         style = TextStyle(
             fontSize = 30.sp,
             textDecoration = TextDecoration.Underline
@@ -90,13 +90,15 @@ fun ShowListStates(
 }
 
 @Composable
-fun ShowButtonReset() {
+fun ShowButtonReset(
+    appViewModel: AppViewModel
+) {
     Button(
         modifier = Modifier
             .padding(10.dp)
             .width(200.dp),
         onClick = {
-
+            appViewModel.ResetListStatus()
             }
         ) {
         Text(

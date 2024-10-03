@@ -21,5 +21,6 @@ class AppViewModel : ViewModel() {
 
     fun ResetListStatus() {
         _uiState.value.listStatus.clear()
+        _uiState.value.currentStatus = ""
     }
 }
