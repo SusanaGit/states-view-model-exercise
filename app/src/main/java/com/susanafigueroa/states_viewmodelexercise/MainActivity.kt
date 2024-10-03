@@ -19,10 +19,14 @@ import androidx.compose.ui.res.stringResource
 import com.susanafigueroa.states_viewmodelexercise.ui.StatesViewModelApp
 
 class MainActivity : ComponentActivity() {
+
     @OptIn(ExperimentalMaterial3Api::class)
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(
+        savedInstanceState: Bundle?
+    ) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, getString(R.string.oncreate_called))
+
         enableEdgeToEdge()
         setContent {
             Scaffold(
