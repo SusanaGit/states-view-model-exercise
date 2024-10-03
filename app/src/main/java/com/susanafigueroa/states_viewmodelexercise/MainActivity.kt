@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "onCreate Called")
+        Log.d(TAG, getString(R.string.oncreate_called))
         enableEdgeToEdge()
         setContent {
             Scaffold(
@@ -51,32 +51,32 @@ class MainActivity : ComponentActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.d(TAG, "onStart Called")
+        Log.d(TAG, getString(R.string.onstart_called))
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d(TAG, "onResume Called")
+        Log.d(TAG, getString(R.string.onresume_called))
     }
 
     override fun onRestart() {
         super.onRestart()
-        Log.d(TAG, "onRestart Called")
+        Log.d(TAG, getString(R.string.onrestart_called))
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d(TAG, "onPause Called")
+        Log.d(TAG, getString(R.string.onpause_called))
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d(TAG, "onStop Called")
+        Log.d(TAG, getString(R.string.onstop_called))
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(TAG, "onDestroy Called")
+        Log.d(TAG, getString(R.string.ondestroy_called))
     }
 }
 

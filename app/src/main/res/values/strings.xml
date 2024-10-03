@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">States - View Model Exercise</string>
     <string name="states_view_model_exercise">States View Model Exercise</string>
+    <string name="oncreate_called">onCreate Called</string>
+    <string name="onstart_called">onStart Called</string>
+    <string name="onresume_called">onResume Called</string>
+    <string name="onrestart_called">onRestart Called</string>
+    <string name="onpause_called">onPause Called</string>
+    <string name="onstop_called">onStop Called</string>
+    <string name="ondestroy_called">onDestroy Called</string>
 </resources>
